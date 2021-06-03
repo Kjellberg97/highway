@@ -81,8 +81,9 @@ class HighwayEnv(AbstractEnv):
         :param action: the last action performed
         :return: the corresponding reward
         """
-        lane_change = action == 0 or action == 2
-        #lane_change = action == 2
+        #lane_change = action == 0 or action == 2
+        #action 0 is switching to the left lane
+        lane_change = action == 0
         neighbours = self.road.network.all_side_lanes(self.vehicle.lane_index)
         lane = self.vehicle.target_lane_index[2] if isinstance(self.vehicle, ControlledVehicle) \
             else self.vehicle.lane_index[2]
